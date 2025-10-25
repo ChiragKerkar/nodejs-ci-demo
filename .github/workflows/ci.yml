@@ -1,0 +1,32 @@
+# .github/workflows/ci.yml
+
+name: Node.js CI Workflow
+
+on:
+  push:
+    branches: [ "main" ] # Trigger the workflow on pushes to the 'main' branch
+  pull_request:
+    branches: [ "main" ] # Also trigger on Pull Requests targeting 'main'
+
+jobs:
+  check-install: # The ID of the job
+
+    runs-on: ubuntu-latest # The type of virtual machine environment
+
+    steps:
+      # Step 1: Get the code from the repository
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+        # This is a pre-built action that clones your repo onto the runner.
+
+      # Step 2: Set up the Node.js environment
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify the version of Node.js to install on the runner.
+
+      # Step 3: Run the install command
+      - name: Install Dependencies
+        run: npm install
+        # This shell command runs on the runner, ensuring your package.json
+        # and lock file are valid and all dependencies can be installed.
