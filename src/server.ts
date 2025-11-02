@@ -89,7 +89,8 @@ app.get('/users', async (req: Request, res: Response) => {
 
 // A simple root endpoint to confirm the server is running
 app.get('/', (req, res) => {
-    res.send('Node.js Server is running!');
+    // res.send('Node.js Server is running!');
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 
