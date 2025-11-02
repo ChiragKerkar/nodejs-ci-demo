@@ -30,7 +30,7 @@ const pgPool = new Pool({
     idleTimeoutMillis: 30000,
 });
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 // Middleware
 app.use(express.json());
@@ -74,7 +74,7 @@ app.get('/users', async (req, res) => {
 
 app.get('/', (req, res) => {
     // res.send('Node.js Server is running!');
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.listen(PORT, () => {
