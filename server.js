@@ -1,4 +1,4 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -24,6 +24,7 @@ const pgPool = new Pool({
     idleTimeoutMillis: 30000, // How long a client can be idle before being disconnected
 });
 
+dotenv.config();
 // Middleware to parse JSON
 app.use(express.json());
 
