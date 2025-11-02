@@ -2,22 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NodeJS App</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | NodeJS CI Demo</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>User Management</h1>
+  <div class="login-container">
+    <h1>Welcome Back 👋</h1>
+    <p>Please sign in to continue</p>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div id="message"></div>
+  </div>
 
-  <form id="userForm">
-    <input type="text" id="name" placeholder="Name" required />
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button type="submit">Add User</button>
-  </form>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-  <h2>Users</h2>
-  <ul id="userList"></ul>
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-  <script src="script.js"></script>
+      const data = await res.json();
+      const msg = document.getElementById('message');
+      msg.textContent = data.message;
+      msg.style.color = res.ok ? 'green' : 'red';
+    });
+  </script>
 </body>
 </html>

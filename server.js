@@ -30,6 +30,8 @@ const pgPool = new Pool({
     idleTimeoutMillis: 30000,
 });
 
+app.use(express.static(path.join(__dirname, '../public')));
+
 // Middleware
 app.use(express.json());
 
