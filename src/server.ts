@@ -1,4 +1,4 @@
-import 'dotenv/config'; // Modern way to load dotenv in TypeScript/ESM
+import dotenv from 'dotenv';
 import express from 'express';
 import type { Request, Response } from 'express';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.ts";
 
+dotenv.config();
 const app = express();
 const PORT = 3000;
 app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
