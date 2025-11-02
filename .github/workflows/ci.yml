@@ -30,12 +30,3 @@ jobs:
         run: npm install
         # This shell command runs on the runner, ensuring your package.json
         # and lock file are valid and all dependencies can be installed.
-
-        # Step 4: Run a command designed to fail
-      - name: Dummy Command That Always Fails ❌
-        run: exit 1  # The 'exit 1' command immediately stops the script
-                     # and returns a non-zero code (1), which signals failure.
-
-      # Step 5: This step will never run because the previous one failed
-      - name: This Step Should Be Skipped 🛑
-        run: echo "If you see this, the test failed to stop."
