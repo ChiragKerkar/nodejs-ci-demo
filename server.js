@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import axios from 'axios';
 import pkg from 'pg';
+import path from 'path';
 const { Pool } = pkg;
 
 dotenv.config();
@@ -14,6 +15,9 @@ console.log("DB_USER:", process.env.DB_USER);
 console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
 console.log("DB_HOST:", process.env.DB_HOST);
 console.log("-------------------------");
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const pgPool = new Pool({
     user: process.env.DB_USER,
@@ -66,7 +70,8 @@ app.get('/users', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Node.js Server is running!');
+    // res.send('Node.js Server is running!');
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(PORT, () => {
