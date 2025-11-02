@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1, h2 {
+  color: #00355A;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, button {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #8BC63C;
+  color: white;
+  cursor: pointer;
+}
